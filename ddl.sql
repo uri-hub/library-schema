@@ -47,14 +47,14 @@ CREATE TABLE
     titulo NVARCHAR (200) NOT NULL,
     ISBN CHAR(13) UNIQUE NOT NULL,
     paginas INT NOT NULL,
-    edicao INT NOT NULL,
+    publicacao DATE NOT NULL,
     fk_editora INT NOT NULL REFERENCES editoras (editora_id) ON DELETE CASCADE,
     fk_categoria INT NOT NULL REFERENCES categorias (categoria_id) ON DELETE CASCADE
   );
 
 -- Tabela de associação entre livros e autores (N:N)
 CREATE TABLE
-  autor_livro (
+  livro_autor (
     fk_autor INT NOT NULL REFERENCES autores (autor_id) ON DELETE CASCADE,
     fk_livro INT NOT NULL REFERENCES livros (livro_id) ON DELETE CASCADE,
     PRIMARY KEY (fk_autor, fk_livro)
